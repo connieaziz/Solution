@@ -69,4 +69,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return note;
     }
+
+    public void deleteNote(int id){
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        String tableNotes="notes";
+        String whereClause="id=?";
+        String[] whereArgs=new String[]{String.valueOf(id)};
+        sqLiteDatabase.delete(tableNotes,whereClause,whereArgs);
+    }
+
 }

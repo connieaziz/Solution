@@ -40,6 +40,7 @@ public class AddNoteActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
 
 
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

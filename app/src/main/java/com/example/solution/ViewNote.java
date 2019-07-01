@@ -3,6 +3,7 @@ package com.example.solution;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.solution.database.DatabaseHelper;
@@ -23,7 +24,17 @@ public class ViewNote extends AppCompatActivity {
         getNoteId();
         tvTitle=findViewById(R.id.tvTitle);
         tvNoteText=findViewById(R.id.tvNoteText);
+        View btnDelete = findViewById(R.id.btnDelete);
         displayNote();
+
+        btnDelete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext(),"notes",null, 1);
+                databaseHelper.deleteNote(noteId);
+                finish();
+            }
+        });
     }
 public void getNoteId(){
         Bundle bundle=getIntent().getExtras();
